@@ -1,7 +1,7 @@
 h1 {
   text-align: center;
   margin: 15px auto;
-  font-size: 38px;
+  font-size: 40px;
 }
 form {
   margin: 0 auto;
@@ -21,17 +21,18 @@ ul {
   padding: 20px;
   margin: 15px;
 }
-.main-emoji {
-  font-size: 100px;
+.icon {
   position: relative;
-  top: 10px;
+  top: 45px;
   left: 30px;
+  width: 100px;
 }
+
 .currentDay {
   font-size: 23px;
 }
 .emojis {
-  font-size: 45px;
+  width: 45px;
 }
 .card {
   text-align: center;
@@ -41,7 +42,7 @@ ul {
   margin: 15px;
 }
 .temperature {
-  font-size: 15px;
+  font-size: 18px;
   position: relative;
   top: -15px;
 }
