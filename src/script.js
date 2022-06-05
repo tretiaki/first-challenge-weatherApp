@@ -42,7 +42,8 @@ form.addEventListener("submit", searchForCity);
 
 function handleTemperature(response) {
   console.log(response.data);
-  temperature = Math.round(response.data.main.temp);
+  celsiusTemp = response.data.main.temp;
+  temperature = Math.round(celsiusTemp);
   let temperatureElement = document.querySelector("#currentDegree");
   temperatureElement.innerHTML = temperature;
 }
@@ -78,4 +79,59 @@ function handleDetails(response) {
   let maxTemperature = document.querySelector("#maxTemp");
   maxTemperature.innerHTML = `${max}°`;
 }
+
+function handleFahrenheitTemp(event) {
+  event.preventDefault();
+  celsiusLink.classList.remove("active");
+  fahrenheitLink.classList.add("active");
+  let temperatureElement = document.querySelector("#currentDegree");
+  let fahrenheit = Math.round((celsiusTemp * 9) / 5 + 32);
+
+  temperatureElement.innerHTML = fahrenheit;
+}
+let celsiusTemp = null;
+let fahrenheitLink = document.querySelector("#fahrenheit-link");
+fahrenheitLink.addEventListener("click", handleFahrenheitTemp);
+
+function handleCelsiusTemp(event) {
+  event.preventDefault();
+  celsiusLink.classList.add("active");
+  fahrenheitLink.classList.remove("active");
+  let temperatureElement = document.querySelector("#currentDegree");
+  temperatureElement.innerHTML = Math.round(celsiusTemp);
+}
+let celsiusLink = document.querySelector("#celsius-link");
+celsiusLink.addEventListener("click", handleCelsiusTemp);
+
+///let iconElement = document.querySelector("#icon");
+/// iconElement.setAttribute(
+///  "src",
+///  `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+///);
+
 search("Kyiv");
+///let dHoursR = hours(response.data.sys.sunrise);
+///let dMinR = minutes(response.data.sys.sunrise);
+/// let dHoursS = hours(response.data.sys.sunset);
+/// let dMinS = minutes(response.data.sys.sunset);
+///let sunriseElement = document.querySelector("#minTemp");
+/// let sunsetElement = document.querySelector("#maxTemp");
+/// sunriseElement.innerHTML = `${dHoursR}:${dMinR}`;
+/// sunsetElement.innerHTML = `${dHoursS}:${dMinS}`;
+
+////const { id } = response.data.weather[0];
+///wIcon = document.querySelector("img");
+
+///if (id == 800) {
+/// wIcon.src = "assets/clear.svg";
+///} else if (id >= 200 && id <= 232) {
+/// wIcon.src = "assets/strom.svg";
+///} else if (id >= 600 && id <= 622) {
+/// wIcon.src = "assets/snowy.svg";
+///} else if (id >= 701 && id <= 781) {
+/// wIcon.src = "assets/haze.svg";
+///} else if (id >= 801 && id <= 804) {
+/// wIcon.src = "assets/cloudy.svg";
+///} else if ((id >= 300 && id <= 321) || (id >= 500 && id <= 531)) {
+////  wIcon.src = "assets/rainy.svg";
+///}

@@ -12,33 +12,37 @@
     />
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <link rel="stylesheet" href="src/style.css" class="css" />
+
     <title>Project</title>
   </head>
   <body>
     <div class="container">
       <div class="weather-app">
-        <div class="row">
-          <div class="col form">
-            <form>
+        <form>
+          <div class="row">
+            <div class="col-7">
               <input
                 type="text"
                 id="search"
                 autocomplete="off"
                 placeholder="Choose a city..."
-                style="width: 390px"
+                class="form-control"
               />
-              <input type="submit" value="🔎" />
-            </form>
+            </div>
+            <div class="col-1">
+              <input type="submit" value="Search🔎" class="btn btn-primary" />
+            </div>
           </div>
-        </div>
+        </form>
         <div class="row">
           <div class="card md-3" style="width: 390px">
             <div class="row g-0">
               <div class="col-sm-4">
                 <img
                   src="https://bmcdn.nl/assets/weather-icons/v3.0/fill/svg/clear-day.svg"
-                  alt="Sunny"
+                  alt="Weather Icon"
                   class="src icon"
+                  id="icon"
                 />
               </div>
               <div class="col-sm-8">
@@ -47,9 +51,16 @@
                     <span class="city">Kyiv</span>
                     <br />
                     <span class="currentDegree" id="currentDegree">19</span
-                    ><span class="temperature">°C</span>
+                    ><span class="temperature"
+                      ><a href="#" id="celsius-link" class="active">°C</a> |<a
+                        href="#"
+                        id="fahrenheit-link"
+                        >°F</a
+                      ></span
+                    >
                     <br />
-                    <span class="currentDay" id="currentTime"
+                    <span class="updatedon">Last updated:</span>
+                    <span class="currentDay updatedon" id="currentTime"
                       >Monday 15:38</span
                     >
                   </h1>
