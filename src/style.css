@@ -6,7 +6,9 @@ h1 {
 form {
   margin: 0 auto;
   padding-left: 4px;
+  margin-bottom: 10px;
 }
+
 li {
   margin: 15px;
 }
@@ -17,7 +19,22 @@ ul {
   font-size: 28px;
   margin: 50px auto;
 }
-
+.buttonLocation {
+  margin-left: 30px;
+  width: 100px;
+  background-color: rgb(222, 192, 249);
+  transition: all 200ms ease-in-out;
+}
+.buttonLocation:hover {
+  background-color: rgb(241, 225, 255);
+}
+.buttonSearch {
+  background-color: rgb(193, 205, 253);
+  transition: all 200ms ease-in-out;
+}
+.buttonSearch:hover {
+  background-color: rgb(227, 232, 254);
+}
 .weather-app {
   padding: 20px;
   margin: 15px;

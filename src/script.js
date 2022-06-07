@@ -29,6 +29,7 @@ function search(city) {
     handleCity(response);
     handleTemperature(response);
     handleDetails(response);
+    handleIcon(response);
   });
 }
 
@@ -103,12 +104,63 @@ function handleCelsiusTemp(event) {
 let celsiusLink = document.querySelector("#celsius-link");
 celsiusLink.addEventListener("click", handleCelsiusTemp);
 
-///let iconElement = document.querySelector("#icon");
-/// iconElement.setAttribute(
-///   "src",
-///   `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
-/// );
+///try do do once more the problem probably is that it cannot find
+///a city cause ur geo is a list of numbers not a name of the city
 
+///function searchLocation(position) {
+///let apiKey = "ab1ed0621301801bfeccd71121482ee3";
+///let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=${apiKey}&units=metric`;
+
+//// axios.get(apiUrl).then(search(position));
+///}
+
+///function getCurrentLocation(event) {
+/// event.preventDefault();
+/// navigator.geolocation.getCurrentPosition(searchLocation);
+///}
+////let currentLocationButton = document.querySelector("#button");
+///currentLocationButton.addEventListener("click", getCurrentLocation);
+function handleIcon(response) {
+  let wIcon = document.querySelector("#icon");
+  const { id } = response.data.weather[0];
+
+  if (id == 800) {
+    wIcon.setAttribute(
+      "src",
+      "https://bmcdn.nl/assets/weather-icons/v3.0/fill/svg/clear-day.svg"
+    );
+  } else if (id >= 200 && id <= 232) {
+    wIcon.setAttribute(
+      "src",
+      "https://bmcdn.nl/assets/weather-icons/v3.0/fill/svg/thunderstorms.svg"
+    );
+  } else if (id >= 300 && id <= 321) {
+    wIcon.setAttribute(
+      "src",
+      "https://bmcdn.nl/assets/weather-icons/v3.0/fill/svg/overcast-day-drizzle.svg"
+    );
+  } else if (id >= 500 && id <= 531) {
+    wIcon.setAttribute(
+      "src",
+      "https://bmcdn.nl/assets/weather-icons/v3.0/fill/svg/rain.svg"
+    );
+  } else if (id >= 600 && id <= 622) {
+    wIcon.setAttribute(
+      "src",
+      "https://bmcdn.nl/assets/weather-icons/v3.0/fill/svg/overcast-day-hail.svg"
+    );
+  } else if (id >= 701 && id <= 781) {
+    wIcon.setAttribute(
+      "src",
+      "https://bmcdn.nl/assets/weather-icons/v3.0/fill/svg/haze.svg"
+    );
+  } else if (id >= 801 && id <= 804) {
+    wIcon.setAttribute(
+      "src",
+      "https://bmcdn.nl/assets/weather-icons/v3.0/fill/svg/cloudy.svg"
+    );
+  }
+}
 search("Kyiv");
 ///let dHoursR = hours(response.data.sys.sunrise);
 ///let dMinR = minutes(response.data.sys.sunrise);
@@ -122,16 +174,4 @@ search("Kyiv");
 ////const { id } = response.data.weather[0];
 ///wIcon = document.querySelector("img");
 
-///if (id == 800) {
-/// wIcon.src = "assets/clear.svg";
-///} else if (id >= 200 && id <= 232) {
-/// wIcon.src = "assets/strom.svg";
-///} else if (id >= 600 && id <= 622) {
-/// wIcon.src = "assets/snowy.svg";
-///} else if (id >= 701 && id <= 781) {
-/// wIcon.src = "assets/haze.svg";
-///} else if (id >= 801 && id <= 804) {
-/// wIcon.src = "assets/cloudy.svg";
-///} else if ((id >= 300 && id <= 321) || (id >= 500 && id <= 531)) {
-////  wIcon.src = "assets/rainy.svg";
-///}
+///
