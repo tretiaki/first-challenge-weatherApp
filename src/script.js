@@ -161,17 +161,14 @@ function handleIcon(response) {
     );
   }
 }
+
 search("Kyiv");
+///
 ///let dHoursR = hours(response.data.sys.sunrise);
-///let dMinR = minutes(response.data.sys.sunrise);
-/// let dHoursS = hours(response.data.sys.sunset);
+/// let dMinR = minutes(response.data.sys.sunrise);
+///let dHoursS = hours(response.data.sys.sunset);
 /// let dMinS = minutes(response.data.sys.sunset);
 ///let sunriseElement = document.querySelector("#minTemp");
-/// let sunsetElement = document.querySelector("#maxTemp");
+///let sunsetElement = document.querySelector("#maxTemp");
 /// sunriseElement.innerHTML = `${dHoursR}:${dMinR}`;
 /// sunsetElement.innerHTML = `${dHoursS}:${dMinS}`;
-
-////const { id } = response.data.weather[0];
-///wIcon = document.querySelector("img");
-
-///
