@@ -33,6 +33,24 @@ function search(city) {
   });
 }
 
+function searchLocation(position) {
+  let apiKey = "ab1ed0621301801bfeccd71121482ee3";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=${apiKey}&units=metric`;
+
+  axios.get(apiUrl).then(function (response) {
+    handleCity(response);
+    handleTemperature(response);
+    handleDetails(response);
+    handleIcon(response);
+  });
+}
+function getCurrentLocation(event) {
+  event.preventDefault();
+  navigator.geolocation.getCurrentPosition(searchLocation);
+}
+let currentLocationButton = document.querySelector("#button");
+currentLocationButton.addEventListener("click", getCurrentLocation);
+
 function searchForCity(event) {
   event.preventDefault();
   let city = document.querySelector("#search").value.trim();
@@ -48,12 +66,14 @@ function handleTemperature(response) {
   let temperatureElement = document.querySelector("#currentDegree");
   temperatureElement.innerHTML = temperature;
 }
+
 function handleCity(response) {
   let city = response.data.name;
   console.log(city);
   let currentCity = document.querySelector(".city");
   currentCity.innerHTML = city;
 }
+
 function handleDetails(response) {
   console.log(response.data);
   let humidity = response.data.main.humidity;
@@ -104,22 +124,6 @@ function handleCelsiusTemp(event) {
 let celsiusLink = document.querySelector("#celsius-link");
 celsiusLink.addEventListener("click", handleCelsiusTemp);
 
-///try do do once more the problem probably is that it cannot find
-///a city cause ur geo is a list of numbers not a name of the city
-
-///function searchLocation(position) {
-///let apiKey = "ab1ed0621301801bfeccd71121482ee3";
-///let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=${apiKey}&units=metric`;
-
-//// axios.get(apiUrl).then(search(position));
-///}
-
-///function getCurrentLocation(event) {
-/// event.preventDefault();
-/// navigator.geolocation.getCurrentPosition(searchLocation);
-///}
-////let currentLocationButton = document.querySelector("#button");
-///currentLocationButton.addEventListener("click", getCurrentLocation);
 function handleIcon(response) {
   let wIcon = document.querySelector("#icon");
   const { id } = response.data.weather[0];
