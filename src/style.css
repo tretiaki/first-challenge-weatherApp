@@ -2,6 +2,13 @@ h1 {
   text-align: center;
   margin: 15px auto;
   font-size: 38px;
+  font-weight: 600;
+}
+h2 {
+  text-align: center;
+  margin: 15px auto;
+  font-size: 18px;
+  font-weight: 350;
 }
 form {
   margin: 0 auto;
@@ -45,21 +52,21 @@ ul {
   left: 10px;
   width: 150px;
 }
-.updatedon {
-  font-size: 16px;
-}
+
 .emojis {
-  width: 110px;
+  width: 130px;
   padding: 0;
 }
 .card {
   text-align: center;
-  font-size: 45px;
+  font-size: 25px;
   width: 180px;
   padding: 10px;
   margin: 15px;
 }
-
+.temperature-max {
+  font-weight: 600;
+}
 .temperature {
   font-size: 18px;
   position: relative;
