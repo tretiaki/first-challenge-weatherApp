@@ -15,7 +15,9 @@ form {
   padding-left: 4px;
   margin-bottom: 10px;
 }
-
+body {
+  background-color: rgb(255, 255, 255);
+}
 li {
   margin: 15px;
 }
