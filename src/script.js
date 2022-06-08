@@ -22,6 +22,58 @@ let date = document.querySelector("#currentTime");
 
 date.innerHTML = `${day} ${hours}:${min}`;
 
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+  let days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+  return days[day];
+}
+
+function displayForecast(response) {
+  let forecast = response.data.daily;
+  let forecastElement = document.querySelector("#forecast");
+
+  let forecastHTML = `<div class="row">`;
+  forecast.forEach(function (forecastDay, index) {
+    if (index < 5) {
+      forecastHTML =
+        forecastHTML +
+        `
+<div class="card">
+<div class="card-body">
+  <h5 class="card-title weather-forecast-day">${formatDay(forecastDay.dt)}</h5>
+  <img
+    src="image/${forecastDay.weather[0].icon}.svg"
+    
+    class="src emojis"
+  />
+  <p class="card-text">
+    <span class="temperature-min">${Math.round(forecastDay.temp.min)}°</span>
+    <span class="temperature-max">${Math.round(forecastDay.temp.max)}°</span>
+  </p>
+</div>
+</div>`;
+    }
+  });
+
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
+}
+function handleForecast(coordinates) {
+  console.log(coordinates);
+  let apiKey = "ab1ed0621301801bfeccd71121482ee3";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
+  console.log(apiUrl);
+  axios.get(apiUrl).then(displayForecast);
+}
 function search(city) {
   let apiKey = "ab1ed0621301801bfeccd71121482ee3";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
@@ -29,7 +81,8 @@ function search(city) {
     handleCity(response);
     handleTemperature(response);
     handleDetails(response);
-    handleIcon(response);
+
+    handleForecast(response.data.coord);
   });
 }
 
@@ -41,7 +94,6 @@ function searchLocation(position) {
     handleCity(response);
     handleTemperature(response);
     handleDetails(response);
-    handleIcon(response);
   });
 }
 function getCurrentLocation(event) {
@@ -99,6 +151,10 @@ function handleDetails(response) {
   let max = Math.round(response.data.main.temp_max);
   let maxTemperature = document.querySelector("#maxTemp");
   maxTemperature.innerHTML = `${max}°`;
+
+  let iconElement = document.querySelector("#icon");
+  iconElement.setAttribute("src", `image/${response.data.weather[0].icon}.svg`);
+  iconElement.setAttribute("alt", response.data.weather[0].description);
 }
 
 function handleFahrenheitTemp(event) {
@@ -123,48 +179,6 @@ function handleCelsiusTemp(event) {
 }
 let celsiusLink = document.querySelector("#celsius-link");
 celsiusLink.addEventListener("click", handleCelsiusTemp);
-
-function handleIcon(response) {
-  let wIcon = document.querySelector("#icon");
-  const { id } = response.data.weather[0];
-
-  if (id == 800) {
-    wIcon.setAttribute(
-      "src",
-      "https://bmcdn.nl/assets/weather-icons/v3.0/fill/svg/clear-day.svg"
-    );
-  } else if (id >= 200 && id <= 232) {
-    wIcon.setAttribute(
-      "src",
-      "https://bmcdn.nl/assets/weather-icons/v3.0/fill/svg/thunderstorms.svg"
-    );
-  } else if (id >= 300 && id <= 321) {
-    wIcon.setAttribute(
-      "src",
-      "https://bmcdn.nl/assets/weather-icons/v3.0/fill/svg/overcast-day-drizzle.svg"
-    );
-  } else if (id >= 500 && id <= 531) {
-    wIcon.setAttribute(
-      "src",
-      "https://bmcdn.nl/assets/weather-icons/v3.0/fill/svg/rain.svg"
-    );
-  } else if (id >= 600 && id <= 622) {
-    wIcon.setAttribute(
-      "src",
-      "https://bmcdn.nl/assets/weather-icons/v3.0/fill/svg/overcast-day-hail.svg"
-    );
-  } else if (id >= 701 && id <= 781) {
-    wIcon.setAttribute(
-      "src",
-      "https://bmcdn.nl/assets/weather-icons/v3.0/fill/svg/haze.svg"
-    );
-  } else if (id >= 801 && id <= 804) {
-    wIcon.setAttribute(
-      "src",
-      "https://bmcdn.nl/assets/weather-icons/v3.0/fill/svg/cloudy.svg"
-    );
-  }
-}
 
 search("Kyiv");
 ///

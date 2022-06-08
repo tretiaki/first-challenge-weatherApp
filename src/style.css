@@ -44,7 +44,8 @@ ul {
 }
 .weather-app {
   padding: 20px;
-  margin: 15px;
+  margin-top: 15px;
+  margin-bottom: 15px;
 }
 .icon {
   position: relative;
@@ -54,7 +55,7 @@ ul {
 }
 
 .emojis {
-  width: 130px;
+  width: 110px;
   padding: 0;
 }
 .card {
