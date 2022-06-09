@@ -126,7 +126,7 @@ function handleCity(response) {
 function handleDetails(response) {
   let humidity = response.data.main.humidity;
   let currentHumidity = document.querySelector("#humidity");
-  currentHumidity.innerHTML = `${humidity}%`;
+  currentHumidity.innerHTML = ` ${humidity}%`;
 
   let feelsLike = Math.round(response.data.main.feels_like);
   let currentFeelsLike = document.querySelector("#feelsLike");
@@ -138,15 +138,26 @@ function handleDetails(response) {
 
   let wind = Math.round(response.data.wind.speed);
   let windSpeed = document.querySelector("#wind");
-  windSpeed.innerHTML = `${wind} km/h`;
+  windSpeed.innerHTML = ` ${wind} km/h`;
 
-  let min = Math.round(response.data.main.temp_min);
-  let minTemperature = document.querySelector("#minTemp");
-  minTemperature.innerHTML = `${min}°`;
+  ///let min = Math.round(response.data.main.temp_min);
+  /// let minTemperature = document.querySelector("#minTemp");
+  ///minTemperature.innerHTML = `${min}°`;
 
-  let max = Math.round(response.data.main.temp_max);
-  let maxTemperature = document.querySelector("#maxTemp");
-  maxTemperature.innerHTML = `${max}°`;
+  ///let max = Math.round(response.data.main.temp_max);
+  ///let maxTemperature = document.querySelector("#maxTemp");
+  ///maxTemperature.innerHTML = `${max}°`;
+
+  let sunriseElement = document.querySelector("#sunrise");
+  let sunsetElement = document.querySelector("#sunset");
+  let sunriseTime = new Date(response.data.sys.sunrise * 1000);
+  let sunsetTime = new Date(response.data.sys.sunset * 1000);
+  sunriseElement.innerHTML = ` ${sunriseTime.getHours()}:${String(
+    sunriseTime.getMinutes()
+  ).padStart(2, "0")}`;
+  sunsetElement.innerHTML = ` ${sunsetTime.getHours()}:${String(
+    sunsetTime.getMinutes()
+  ).padStart(2, "0")}`;
 
   let iconElement = document.querySelector("#icon");
   iconElement.setAttribute("src", `image/${response.data.weather[0].icon}.svg`);
