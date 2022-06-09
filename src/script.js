@@ -68,10 +68,9 @@ function displayForecast(response) {
   forecastElement.innerHTML = forecastHTML;
 }
 function handleForecast(coordinates) {
-  console.log(coordinates);
   let apiKey = "ab1ed0621301801bfeccd71121482ee3";
   let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
-  console.log(apiUrl);
+
   axios.get(apiUrl).then(displayForecast);
 }
 function search(city) {
@@ -81,7 +80,6 @@ function search(city) {
     handleCity(response);
     handleTemperature(response);
     handleDetails(response);
-
     handleForecast(response.data.coord);
   });
 }
@@ -112,7 +110,6 @@ let form = document.querySelector("form");
 form.addEventListener("submit", searchForCity);
 
 function handleTemperature(response) {
-  console.log(response.data);
   celsiusTemp = response.data.main.temp;
   temperature = Math.round(celsiusTemp);
   let temperatureElement = document.querySelector("#currentDegree");
@@ -121,13 +118,12 @@ function handleTemperature(response) {
 
 function handleCity(response) {
   let city = response.data.name;
-  console.log(city);
+
   let currentCity = document.querySelector(".city");
   currentCity.innerHTML = city;
 }
 
 function handleDetails(response) {
-  console.log(response.data);
   let humidity = response.data.main.humidity;
   let currentHumidity = document.querySelector("#humidity");
   currentHumidity.innerHTML = `${humidity}%`;
