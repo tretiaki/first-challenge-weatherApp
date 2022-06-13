@@ -92,6 +92,7 @@ function searchLocation(position) {
     handleCity(response);
     handleTemperature(response);
     handleDetails(response);
+    handleForecast(response.data.coord);
   });
 }
 function getCurrentLocation(event) {
