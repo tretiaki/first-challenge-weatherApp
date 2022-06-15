@@ -115,6 +115,7 @@ function handleTemperature(response) {
   temperature = Math.round(celsiusTemp);
   let temperatureElement = document.querySelector("#currentDegree");
   temperatureElement.innerHTML = temperature;
+  handleCelsiusTemp(event);
 }
 
 function handleCity(response) {
