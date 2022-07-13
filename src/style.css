@@ -87,3 +87,30 @@ ul {
   text-decoration: none;
   color: black;
 }
+
+@media (max-width: 576px) {
+  h1 {
+    font-size: 40px;
+  }
+  li {
+    font-size: 23px;
+    margin: 0px;
+  }
+  .column {
+    margin-left: 10px;
+  }
+  .card {
+    width: 370px;
+  }
+  .maincard {
+    width: 360px;
+  }
+  .weather-app {
+    padding: 10;
+    display: block;
+    margin: 0 auto;
+  }
+  .buttonLocation {
+    display: none;
+  }
+}
