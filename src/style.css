@@ -87,6 +87,13 @@ ul {
   text-decoration: none;
   color: black;
 }
+.maincard {
+  border: solid;
+  border-radius: 5px;
+  border-width: 0.5px;
+  border-color: rgb(217, 217, 217);
+  margin: 16px;
+}
 
 @media (max-width: 576px) {
   h1 {
@@ -96,6 +103,9 @@ ul {
     font-size: 23px;
     margin: 0px;
   }
+  ul {
+    margin: 30px auto;
+  }
   .column {
     margin-left: 10px;
   }
@@ -103,7 +113,8 @@ ul {
     width: 370px;
   }
   .maincard {
-    width: 360px;
+    border: none;
+    margin: 0 auto;
   }
   .weather-app {
     padding: 10;
@@ -111,6 +122,20 @@ ul {
     margin: 0 auto;
   }
   .buttonLocation {
+    display: none;
+  }
+  .icon {
+    position: relative;
+    top: 20px;
+    width: 130px;
+  }
+  h1 {
+    text-align: center;
+    margin: 15px auto;
+    font-size: 34px;
+    font-weight: 600;
+  }
+  h2 {
     display: none;
   }
 }

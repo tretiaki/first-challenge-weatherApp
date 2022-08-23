@@ -165,7 +165,7 @@ function handleDetails(response) {
   iconElement.setAttribute("alt", response.data.weather[0].description);
 }
 
-search("Kyiv");
+search("Prague");
 ///
 ///let dHoursR = hours(response.data.sys.sunrise);
 /// let dMinR = minutes(response.data.sys.sunrise);
