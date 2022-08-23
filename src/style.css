@@ -106,9 +106,7 @@ ul {
   ul {
     margin: 30px auto;
   }
-  .column {
-    margin-left: 10px;
-  }
+
   .card {
     width: 370px;
   }
@@ -126,13 +124,13 @@ ul {
   }
   .icon {
     position: relative;
-    top: 20px;
+    top: 10px;
     width: 120px;
   }
   h1 {
     text-align: center;
     margin: 15px auto;
-    font-size: 34px;
+    font-size: 30px;
     font-weight: 600;
   }
   h2 {
